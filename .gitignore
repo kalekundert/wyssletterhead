@@ -1,0 +1,15 @@
+README
+*.aux
+*.cls
+*.fls
+*.glo
+*.gls
+*.hd
+*.idx
+*.ilg
+*.ind
+*.ins
+*.log
+*.out
+*.pdf
+*.tex

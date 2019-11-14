@@ -1,0 +1,333 @@
+% \iffalse meta-comment
+% vim: textwidth=75
+%<*internal>
+\iffalse
+%</internal>
+%<*readme>
+|
+----------:| --------------------------------------------------------------
+wyssletter:| Letterhead for the Wyss Institute
+    Author:| Kale Kundert
+    E-mail:| kale@thekunderts.net
+   License:| Released under the LaTeX Project Public License v1.3c or later
+       See:| http://www.latex-project.org/lppl.txt
+
+
+Short description:
+Some text about the class: probably the same as the abstract.
+%</readme>
+%<*internal>
+\fi
+\def\nameofplainTeX{plain}
+\ifx\fmtname\nameofplainTeX\else
+  \expandafter\begingroup
+\fi
+%</internal>
+%<*install>
+\input docstrip.tex
+\keepsilent
+\askforoverwritefalse
+\preamble
+----------:| --------------------------------------------------------------
+wyssletter:| Letterhead for the Wyss Institute
+    Author:| Kale Kundert
+    E-mail:| kale@thekunderts.net
+   License:| Released under the LaTeX Project Public License v1.3c or later
+       See:| http://www.latex-project.org/lppl.txt
+
+\endpreamble
+\postamble
+
+Copyright (C) 2019 by Kale Kundert <kale@thekunderts.net>
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License (LPPL), either
+version 1.3c of this license or (at your option) any later
+version.  The latest version of this license is in the file:
+
+http://www.latex-project.org/lppl.txt
+
+This work is "maintained" (as per LPPL maintenance status) by
+Kale Kundert.
+
+This work consists of the file wyssletter.dtx and a Makefile.
+Running "make" generates the following derived files:
+    README
+    wyssletter.pdf
+    wyssletter.cls
+Running "make inst" installs the files in the user's TeX tree.
+Running "make install" installs the files in the local TeX tree.
+
+\endpostamble
+
+\usedir{tex/latex/wyssletter}
+\generate{
+  \file{\jobname.cls}{\from{\jobname.dtx}{class}}
+}
+%</install>
+%<install>\endbatchfile
+%<*internal>
+\usedir{source/latex/wyssletter}
+\generate{
+  \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+}
+\nopreamble\nopostamble
+\usedir{doc/latex/wyssletter}
+\generate{
+  \file{README.txt}{\from{\jobname.dtx}{readme}}
+}
+\ifx\fmtname\nameofplainTeX
+  \expandafter\endbatchfile
+\else
+  \expandafter\endgroup
+\fi
+%</internal>
+% \fi
+%
+% \iffalse
+%<*driver>
+\ProvidesFile{wyssletter.dtx}
+%</driver>
+%<class>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<class>\ProvidesClass{wyssletter}
+%<*class>
+  [2019/11/13 v1.00 Letterhead for the Wyss Institute]
+%</class>
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage[a4paper,margin=25mm,left=50mm,nohead]{geometry}
+\usepackage[numbered]{hypdoc}
+
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+  \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \GetFileInfo{\jobname.dtx}
+% \DoNotIndex{\newcommand,\newenvironment}
+%
+%\title{\textsf{wyssletter} --- Letterhead for the Wyss Institute}
+%\author{Kale Kundert\thanks{E-mail: kale@thekunderts.net}}
+%\date{Released \filedate}
+%
+%\maketitle
+%
+%\changes{v1.00}{2019/11/13}{First public release}
+%
+% \begin{abstract}
+% This document class reproduces the official letterhead used by the Wyss 
+% Institute.  Use this class to typeset letters for grants or other official 
+% business.
+% \end{abstract}
+%
+% \section{Usage}
+%
+% ==== Put descriptive text here. ====
+%
+% \DescribeMacro{\dummyMacro}
+% This macro does nothing.\index{doing nothing|usage} It is merely an
+% example.  If this were a real macro, you would put a paragraph here
+% describing what the macro is supposed to do, what its mandatory and
+% optional arguments are, and so forth.
+%
+% \DescribeEnv{dummyEnv}
+% This environment does nothing.  It is merely an example.
+% If this were a real environment, you would put a paragraph here
+% describing what the environment is supposed to do, what its
+% mandatory and optional arguments are, and so forth.
+%
+%\StopEventually{^^A
+%  \PrintChanges
+%  \PrintIndex
+%}
+%
+% \section{Implementation}
+%
+%    \begin{macrocode}
+%<*class>
+\LoadClass[12pt]{article}
+\RequirePackage{etoolbox}
+\RequirePackage[absolute]{textpos}
+
+\newcommand{\wyss@name}{\textbackslash{}name\{...\}}
+\newcommand{\wyss@desk}{\textbackslash{}desk\{...\}}
+\newcommand{\wyss@date}{\textbackslash{}date\{...\}}
+\newcommand{\wyss@signature}{\vspace{0.5in}}
+\newcommand{\wyss@email}{\textbackslash{}email\{...\}}
+\newcommand{\wyss@phone}{\textbackslash{}phone\{...\}}
+\newcommand{\wyss@opening}{To whom it may concern,}
+\newcommand{\wyss@closing}{Sincerely,}
+%    \end{macrocode}
+%
+% \begin{macro}{\name}
+% Your name.  This will appear above the sender's address and below the 
+% signature.
+%    \begin{macrocode}
+\newcommand{\name}[1]{
+  \renewcommand{\wyss@name}{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\desk}
+% Your desk number (e.g. 528/1C).  This will be added to the sender's 
+% address.
+%    \begin{macrocode}
+\newcommand{\desk}[1]{
+  \renewcommand{\wyss@desk}{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\date}
+% The date the letter will be sent.  This will be added just below the 
+% letterhead.
+%    \begin{macrocode}
+\renewcommand{\date}[1]{
+  \renewcommand{\wyss@date}{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\signature}
+% An image of your signature, if desired.  Use 
+% \textsf{\textbackslash{}includegraphics} to specify the image.
+%    \begin{macrocode}
+\newcommand{\signature}[1]{
+  \renewcommand{\wyss@signature}{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\email}
+% Your email address.  This will appear below your signature.
+%    \begin{macrocode}
+\newcommand{\email}[1]{
+  \renewcommand{\wyss@email}{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\phone}
+% Your phone number.  This will appear below your signature.
+%    \begin{macrocode}
+\newcommand{\phone}[1]{
+  \renewcommand{\wyss@phone}{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\opening}
+% The greeting to use.  The default is ``To whom it may concern,''.
+%    \begin{macrocode}
+\newcommand{\opening}[1]{
+  \renewcommand{\wyss@opening}{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\closing}
+% The salutation before the signature.  The default is ``Sincerely,''.
+%    \begin{macrocode}
+\newcommand{\closing}[1]{
+  \renewcommand{\wyss@closing}{#1}
+}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{environment}{letter}
+% Put the letter inside this environment.  The letterhead and signature 
+% will be rendered above and below the contents of the environment, 
+% respectively.
+%    \begin{macrocode}
+\newenvironment{letter}{%
+%    \end{macrocode}
+%    Render the letterhead above the letter:
+%    \begin{macrocode}
+%    \end{macrocode}
+%
+%    Put the Wyss Institute logo in the top-left corner.
+%    \begin{macrocode}
+  \begin{textblock*}{5in}(1in,1in)
+      \includegraphics[width=2in]{branding/vector/letterhead_black}
+  \end{textblock*}
+%    \end{macrocode}
+%
+%    Put the sender's address in the top-right corner.
+%    \begin{macrocode}
+  \hspace*{0.6\linewidth}
+  \begin{minipage}{0.4\linewidth}
+  \wyss@name \par
+  Harvard University \par
+  Wyss Institute \par
+  3 Blackfan Circle, \wyss@desk \par
+  Boston, MA 02115 \par
+  \end{minipage}
+%    \end{macrocode}
+%
+%    Separate the header from the rest of the letter.
+%    \begin{macrocode}
+  \medskip
+  \begin{center}
+  \rule{\textwidth}{1pt}
+  \end{center}
+  \medskip
+%    \end{macrocode}
+%
+%    Put the date just below the rule, lined up with the sender's address.
+%    \begin{macrocode}
+  \hspace*{0.6\linewidth}
+  \begin{minipage}{0.4\linewidth}
+  \wyss@date
+  \end{minipage}
+  \par\bigskip
+%    \end{macrocode}
+%
+%    Put the opening on the left side of the page.
+%    \begin{macrocode}
+  \wyss@opening\par\bigskip
+}{%
+%    \end{macrocode}
+%
+%    Render the signature below the letter:
+%    \begin{macrocode}
+  \bigskip
+  \wyss@closing\par\medskip
+  \wyss@signature \par
+  \wyss@name \\
+  \wyss@email \\
+  \wyss@phone \\
+}
+%    \end{macrocode}
+% \end{environment}
+%
+%    Use a 1.0'' margin.
+%    \begin{macrocode}
+\RequirePackage[margin=1.0in]{geometry}
+%    \end{macrocode}
+%
+%    Use an unobtrusive, open source, serif font.
+%    \begin{macrocode}
+\RequirePackage{fontspec}
+\setmainfont{Tinos}
+%    \end{macrocode}
+%
+%    Don't number the pages
+%    \begin{macrocode}
+\RequirePackage{nopageno}
+%    \end{macrocode}
+%
+%    Separate paragraphs with vertical space rather than indentation.
+%    \begin{macrocode}
+\RequirePackage{parskip}
+%    \end{macrocode}
+%
+%    \begin{macrocode}
+\endinput
+%</class>
+%    \end{macrocode}
+%\Finale
