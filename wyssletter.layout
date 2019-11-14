@@ -3,12 +3,16 @@
 #  \DeclareCategory{Letters}
 
 Format 66
-Input stdinsets.inc
-Input stdlists.inc
-Input lyxmacros.inc
-Input stdfloats.inc
-Input stdcounters.inc
-Input stdlayouts.inc
+
+Style Standard
+	Category              MainText
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	Align                 Left
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
+End
 
 Style Name
   Category          Letter
@@ -77,3 +81,8 @@ Style Signature
   LeftMargin        Signature:xx
 End
 
+Input stdinsets.inc
+Input stdlists.inc
+Input stdfloats.inc
+Input stdcounters.inc
+Input stdlayouts.inc
