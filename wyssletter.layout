@@ -39,12 +39,6 @@ Style Date
   LabelString       "Date:"
 End
 
-Style Signature
-  CopyStyle         Name
-  LatexName         signature
-  LabelString       "Signature:"
-End
-
 Style Email
   CopyStyle         Name
   LatexName         email
@@ -75,4 +69,11 @@ Style Closing
   BottomSep         1.0
 End
 
+
+Style Signature
+  CopyStyle         Name
+  LatexName         signature
+  LabelString       "Signature:"
+  LeftMargin        Signature:xx
+End
 
