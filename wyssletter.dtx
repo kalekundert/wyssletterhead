@@ -267,7 +267,7 @@ Running "make install" installs the files in the local TeX tree.
 %
 %    Separate the header from the rest of the letter.
 %    \begin{macrocode}
-  \medskip
+  \smallskip
   \begin{center}
   \rule{\textwidth}{1pt}
   \end{center}
@@ -295,12 +295,14 @@ Running "make install" installs the files in the local TeX tree.
 % document.
 %    \begin{macrocode}
 \newcommand{\wyss@endletter}{
-  \bigskip
-  \wyss@closing\par\medskip
-  \wyss@signature \par
-  \wyss@name \\
-  \wyss@email \\
-  \wyss@phone \\
+  \begin{minipage}{\textwidth}
+    \bigskip
+    \wyss@closing\par\medskip
+    \wyss@signature \par
+    \wyss@name \\
+    Email: \wyss@email \\
+    Phone: \wyss@phone \\
+  \end{minipage}
 }
 %    \end{macrocode}
 % \end{macro}
