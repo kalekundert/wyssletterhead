@@ -1,0 +1,78 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[wyssletter]{Wyss Institute}
+#  \DeclareCategory{Letters}
+
+Format 66
+Input stdinsets.inc
+Input stdlists.inc
+Input lyxmacros.inc
+Input stdfloats.inc
+Input stdcounters.inc
+Input stdlayouts.inc
+
+Style Name
+  Category          Letter
+  LabelType         Static
+  LabelString       "Name:"
+	LabelFont
+	  Series              Bold
+	  Shape               Italic
+	  Color               green
+  EndLabelFont
+  LabelSep          xx
+  LeftMargin        MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+
+  LatexType         Command
+  LatexName         name
+  InPreamble        1
+End
+
+Style Desk
+  CopyStyle         Name
+  LatexName         desk
+  LabelString       "Desk:"
+End
+
+Style Date
+  CopyStyle         Name
+  LatexName         date
+  LabelString       "Date:"
+End
+
+Style Signature
+  CopyStyle         Name
+  LatexName         signature
+  LabelString       "Signature:"
+End
+
+Style Email
+  CopyStyle         Name
+  LatexName         email
+  LabelString       "Email:"
+End
+
+Style Phone
+  CopyStyle         Name
+  LatexName         phone
+  LabelString       "Phone:"
+End
+
+Style Opening
+  CopyStyle         Name
+  LatexName         opening
+  LabelString       "Opening:"
+  LeftMargin        Opening:xx
+  TopSep            1.0
+  BottomSep         1.0
+End
+
+Style Closing
+  CopyStyle         Name
+  LatexName         closing
+  LabelString       "Closing:"
+  LeftMargin        Closing:xx
+  TopSep            1.0
+  BottomSep         1.0
+End
+
+
