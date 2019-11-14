@@ -239,15 +239,11 @@ Running "make install" installs the files in the local TeX tree.
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{environment}{letter}
-% Put the letter inside this environment.  The letterhead and signature 
-% will be rendered above and below the contents of the environment, 
-% respectively.
+% \begin{macro}{\wyss@beginletter}
+% Render the letterhead.  This is executed automatically at the beginning 
+% of the document.
 %    \begin{macrocode}
-\newenvironment{letter}{%
-%    \end{macrocode}
-%    Render the letterhead above the letter:
-%    \begin{macrocode}
+\newcommand{\wyss@beginletter}{
 %    \end{macrocode}
 %
 %    Put the Wyss Institute logo in the top-left corner.
@@ -290,11 +286,15 @@ Running "make install" installs the files in the local TeX tree.
 %    Put the opening on the left side of the page.
 %    \begin{macrocode}
   \wyss@opening\par\bigskip
-}{%
+}
 %    \end{macrocode}
+% \end{macro}
 %
-%    Render the signature below the letter:
+% \begin{macro}{\wyss@endletter}
+% Render the signature.  This is executed automatically at the end of the 
+% document.
 %    \begin{macrocode}
+\newcommand{\wyss@endletter}{
   \bigskip
   \wyss@closing\par\medskip
   \wyss@signature \par
@@ -303,7 +303,7 @@ Running "make install" installs the files in the local TeX tree.
   \wyss@phone \\
 }
 %    \end{macrocode}
-% \end{environment}
+% \end{macro}
 %
 %    Use a 1.0'' margin.
 %    \begin{macrocode}
@@ -324,6 +324,12 @@ Running "make install" installs the files in the local TeX tree.
 %    Separate paragraphs with vertical space rather than indentation.
 %    \begin{macrocode}
 \RequirePackage{parskip}
+%    \end{macrocode}
+%
+%    Start a letter right after the begin document tag.
+%    \begin{macrocode}
+\AfterEndPreamble{\wyss@beginletter}
+\AtEndDocument{\wyss@endletter}
 %    \end{macrocode}
 %
 %    \begin{macrocode}
