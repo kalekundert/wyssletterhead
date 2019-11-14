@@ -14,6 +14,8 @@ $ make install
 ```
 
 ## Usage
+
+### LaTeX
 Currently, you need to symlink the `branding/` directory from this repository into the directory with your document.  The `branding/` directory contains the Wyss Institute logo that will go in the top-left corner of the document.  I'd like for this step to be unnecessary, but I don't know how to do that at the moment:
 
 ```
@@ -52,3 +54,6 @@ Use LaTeX to compile the document as usual.  Note that to compile this example, 
 ```
 $ pdflatex my_letter
 ```
+
+### Lyx
+The `wyssletterhead` document class can also be used in LyX.  Simply start LyX, then select "Wyss Institute" from Document > Settings > Document Class.  Use the Name, Desk, Email, Phone, Date, etc. paragraph types to specify all the relevant information, and be sure to symlink the `branding/` directory as above.
